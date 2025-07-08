@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Candy‑shop palette */
+  --primary: #ffb3c6;         /* Rosy pink */
+  --primary-hover: #ffa1b8;
+  --secondary: #f6c8ff;       /* Soft lilac */
+  --delete: #ff6b9c;          /* Vivid pink */
+  --bg-start: #fff4fa;        /* Blush */
+  --bg-end: #fdfcff;          /* Hint of lavender */
+  --card-bg: #ffffff;
+  --input-bg: #fff7fb;
+  --item-bg: #fffaff;
+  --item-border: #fddcf0;
+  --scrollbar: #fbcce4;
+}
+
+/* ——— Base Reset ——— */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, var(--bg-start) 0%, var(--bg-end) 100%);
+  color: #4d4d4d;
+}
+
+/* ——— Card Container ——— */
+.todo-card {
+  width: 100%;
+  max-width: 500px;
+  background: var(--card-bg);
+  border-radius: 2rem;
+  box-shadow: 0 12px 28px rgba(255, 179, 198, 0.25);
+  padding: 3rem 2.25rem 3.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative confetti dots */
+.todo-card::before,
+.todo-card::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: var(--secondary);
+  opacity: 0.35;
+}
+.todo-card::before {
+  width: 120px; height: 120px;
+  top: -40px; right: -40px;
+  filter: blur(10px);
+}
+.todo-card::after {
+  width: 80px; height: 80px;
+  bottom: -25px; left: -25px;
+  background: var(--primary);
+  filter: blur(6px);
+}
+
+.todo-card h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.75rem;
+  color: var(--primary);
+  user-select: none;
+}
+
+/* ——— Input & Button ——— */
+.input-group {
+  display: flex;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 1rem 1.15rem;
+  font-size: 1rem;
+  background: var(--input-bg);
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  outline: none;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.input-group input::placeholder {
+  color: #b49bb1;
+}
+
+.input-group input:focus {
+  background: #fff9fc;
+  border-color: var(--primary);
+}
+
+.input-group button {
+  padding: 0 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background: var(--primary);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.25s;
+  box-shadow: 0 4px 12px rgba(255, 179, 198, 0.45);
+}
+
+.input-group button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px);
+}
+
+/* ——— Todo List Container ——— */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-height: 370px;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+}
+
+/* ——— Single Todo Item ——— */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  justify-content: space-between;
+  padding: 1rem 1.15rem;
+  background: var(--item-bg);
+  border-radius: 1rem;
+  border: 1px solid var(--item-border);
+  box-shadow: 0 2px 6px rgba(255, 179, 198, 0.12);
+  transition: background 0.3s;
+}
+
+.todo-item:hover {
+  background: #fff1f9;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1rem;
+  word-break: break-word;
+  transition: color 0.3s;
+}
+
+/* ——— Checkbox Styling ——— */
+.todo-checkbox {
+  accent-color: var(--primary);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.25s;
+}
+
+.todo-checkbox:hover {
+  transform: scale(1.15);
+}
+
+.todo-checkbox:checked + .todo-text {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+/* ——— Delete Button (heart icon) ——— */
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--delete);
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+  transition: transform 0.25s, color 0.25s;
+}
+
+/* Replace × with heart via CSS */
+.delete-btn::before {
+  content: '❤';
+}
+
+.delete-btn:hover {
+  transform: rotate(12deg) scale(1.2);
+  color: #ff4f86;
+}
+
+/* ——— Scrollbar Styling ——— */
+.todo-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 10px;
+}
+
+/* ——— Empty State ——— */
+.todo-empty {
+  color: #bd9cb4;
+  letter-spacing: 0.2px;
+}

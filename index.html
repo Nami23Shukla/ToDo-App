@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beautiful Todo List</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- External Styles -->
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div class="todo-card">
+      <h1>My Todo List</h1>
+
+      <!-- Input area -->
+      <div class="input-group">
+        <input
+          type="text"
+          id="todo-input"
+          placeholder="Add your task here..."
+        />
+        <button id="add-btn">Add</button>
+      </div>
+
+      <!-- List area -->
+      <div class="todo-list" id="todo-list"><!-- tasks inject here --></div>
+    </div>
+
+    <!-- Main Logic -->
+    <script src="app.js" defer></script>
+  </body>
+</html>
